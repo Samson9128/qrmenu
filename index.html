@@ -212,7 +212,15 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<div id="offline-banner">⚠️ Live menu not available — showing demo menu</div>
+<div id="offline-banner" style="display:none">
+  ⚠️ Live menu not available — showing demo menu
+  <div id="offline-server-form" style="display:none;margin-top:10px">
+    <input id="offline-server-input" placeholder="Paste server URL e.g. https://xxxx.trycloudflare.com"
+      style="width:100%;padding:8px 12px;border:1px solid rgba(200,150,90,.4);border-radius:8px;font-size:12px;background:rgba(255,255,255,.8);font-family:var(--font);margin-bottom:6px"/>
+    <button onclick="applyManualServer()" style="padding:7px 16px;background:var(--accent-dark);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font)">Connect</button>
+  </div>
+  <div style="font-size:11px;margin-top:6px;cursor:pointer;text-decoration:underline;opacity:.7" onclick="document.getElementById('offline-server-form').style.display='block';this.style.display='none'">Enter server URL manually</div>
+</div>
 
 <div id="cat-nav"><div id="cat-scroll"></div></div>
 
@@ -357,9 +365,11 @@ a{color:inherit;text-decoration:none}
 <script>
 /* ════ CONFIG ════ */
 const SERVER_URL_FALLBACK = 'http://localhost:5000';
+// When hosted on Vercel, we read the tunnel URL from /config.json (written by launcher.py)
+// URL priority: ?server= param > localStorage > /config.json (Vercel) > localhost
 
-let _tableId = new URLSearchParams(location.search).get('table') || '1';
-let _server   = localStorage.getItem('menu_server') || SERVER_URL_FALLBACK;
+let _tableId  = new URLSearchParams(location.search).get('table') || '1';
+let _server   = new URLSearchParams(location.search).get('server') || null;
 let _products = [];
 let _settings = {};
 let _cart     = {};
@@ -373,10 +383,76 @@ let _rsvDepositAmt = 0;
 let _rsvFullAmt    = 0;
 let _rsvSelectedTable = null;
 
+/* ════ SMART SERVER RESOLVER ════
+   On Vercel (not localhost): reads /config.json to find current tunnel URL.
+   launcher.py writes config.json whenever tunnel URL changes.
+   localStorage caches the last working URL to speed up cold loads.
+   Falls back to localhost for direct WiFi connections.
+*/
+async function resolveServer() {
+  // 1. URL param overrides everything
+  if (_server) {
+    localStorage.setItem('menu_server', _server);
+    return _server;
+  }
+
+  const isVercel = location.hostname !== 'localhost' &&
+                   location.hostname !== '127.0.0.1' &&
+                   !location.hostname.match(/^192\.168\./) &&
+                   !location.hostname.match(/^10\./) &&
+                   !location.hostname.match(/^172\.(1[6-9]|2\d|3[01])\./);
+
+  if (isVercel) {
+    // Try to fetch config.json from Vercel (updated by launcher.py)
+    try {
+      const r = await fetch('/config.json?_=' + Date.now(), {signal: AbortSignal.timeout(3000)});
+      if (r.ok) {
+        const cfg = await r.json();
+        if (cfg.serverUrl) {
+          // Test this URL is reachable
+          try {
+            await fetch(cfg.serverUrl + '/api/server-info', {signal: AbortSignal.timeout(3000)});
+            localStorage.setItem('menu_server', cfg.serverUrl);
+            return cfg.serverUrl;
+          } catch {}
+        }
+      }
+    } catch {}
+
+    // Fall back to localStorage cached URL
+    const cached = localStorage.getItem('menu_server');
+    if (cached && cached !== SERVER_URL_FALLBACK) {
+      return cached;
+    }
+
+    // No tunnel found — show a helpful message
+    return null;
+  }
+
+  // Local: WiFi or localhost — use origin or localhost
+  const local = location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'
+    ? location.origin
+    : SERVER_URL_FALLBACK;
+  return local;
+}
+
 /* ════ INIT ════ */
 async function init() {
   document.getElementById('table-chip').textContent = 'Table ' + _tableId;
   applyUser();
+
+  // Resolve the server URL before loading
+  _server = await resolveServer();
+  if (!_server) {
+    // No tunnel available — show offline state with helpful message
+    document.getElementById('offline-banner').textContent =
+      '⚠️ Cannot reach restaurant server. Ask staff for the menu link or connect to WiFi.';
+    document.getElementById('offline-banner').style.display = 'block';
+    document.getElementById('menu-loading').style.display   = 'none';
+    applySettings({});
+    return;
+  }
+
   await loadFromServer();
   logVisit();
   loadRsvData();
@@ -811,10 +887,21 @@ async function submitMenuReservation() {
   document.getElementById('rsv-success-ov').classList.add('show');
 }
 
-/* ════ AUTO-DETECT SERVER ════ */
-if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-  _server = location.origin;
-  localStorage.setItem('menu_server', _server);
+/* ════ MANUAL SERVER (fallback for Vercel menu) ════ */
+async function applyManualServer() {
+  let url = (document.getElementById('offline-server-input').value || '').trim().replace(/\/$/, '');
+  if (!url) return;
+  if (!url.startsWith('http')) url = 'https://' + url;
+  _server = url;
+  localStorage.setItem('menu_server', url);
+  document.getElementById('offline-banner').style.display = 'none';
+  document.getElementById('menu-loading').style.display = 'block';
+  _serverOk = false;
+  await loadFromServer();
+  if (_serverOk) {
+    loadRsvData();
+    logVisit();
+  }
 }
 
 /* ════ BOOT ════ */
