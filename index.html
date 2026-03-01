@@ -21,6 +21,7 @@ button{cursor:pointer;font-family:var(--font)}
 a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}
 
+/* ── TOP BAR ──────────────────────────────────────── */
 #topbar{
   position:sticky;top:0;z-index:100;
   background:rgba(250,248,244,.92);backdrop-filter:blur(12px);
@@ -39,6 +40,7 @@ a{color:inherit;text-decoration:none}
 .user-btn.logged-in{background:var(--accent);border-color:var(--accent-dark)}
 .user-btn.logged-in svg{stroke:#fff}
 
+/* ── BANNER ───────────────────────────────────────── */
 #hero{position:relative;overflow:hidden;min-height:180px;display:flex;align-items:flex-end}
 #hero-img{width:100%;height:220px;object-fit:cover;display:none}
 #hero-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#2d1f0e 0%,#8b5e2e 50%,#c8965a 100%);display:flex;align-items:center;justify-content:center}
@@ -48,6 +50,7 @@ a{color:inherit;text-decoration:none}
 .hero-name{font-family:var(--serif);font-size:28px;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
 .hero-tag{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px;display:none}
 
+/* ── CATEGORY TABS (Google-style) ──────────────────── */
 #cat-nav{position:sticky;top:var(--nav-h);z-index:90;background:var(--surface);border-bottom:1px solid var(--border)}
 #cat-scroll{display:flex;overflow-x:auto;padding:0 12px;gap:4px;scrollbar-width:none}
 #cat-scroll::-webkit-scrollbar{display:none}
@@ -55,12 +58,15 @@ a{color:inherit;text-decoration:none}
 .cat-tab.active{color:var(--accent-dark);border-bottom-color:var(--accent);font-weight:600}
 .cat-tab:hover{color:var(--text)}
 
+/* ── CONTENT ──────────────────────────────────────── */
 #content{max-width:680px;margin:0 auto;padding:0 14px}
 
+/* ── CATEGORY SECTION ─────────────────────────────── */
 .cat-section{padding:24px 0 8px}
 .cat-section-title{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:4px;scroll-margin-top:120px}
 .cat-section-count{font-size:12px;color:var(--muted);margin-bottom:18px}
 
+/* ── PRODUCT CARD ─────────────────────────────────── */
 .product-card{
   display:flex;align-items:center;gap:14px;
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
@@ -86,11 +92,14 @@ a{color:inherit;text-decoration:none}
 }
 .product-card.unavailable .prod-add{background:var(--border);box-shadow:none}
 .prod-add:hover{background:var(--accent-dark);transform:scale(1.07)}
+
+/* Qty control on card */
 .prod-qty-ctrl{display:flex;align-items:center;gap:0;flex-shrink:0}
 .qty-btn{width:30px;height:30px;border-radius:50%;background:var(--bg);border:1px solid var(--border);font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:.16s}
 .qty-btn:hover{background:var(--accent-soft);border-color:var(--accent)}
 .qty-num{width:30px;text-align:center;font-size:14px;font-weight:700;color:var(--accent-dark)}
 
+/* ── CART FAB ─────────────────────────────────────── */
 #cart-fab{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
   background:var(--accent-dark);color:#fff;border:none;
@@ -105,6 +114,7 @@ a{color:inherit;text-decoration:none}
 #cart-fab svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
 #cart-count{background:#fff;color:var(--accent-dark);width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
 
+/* ── DRAWERS / MODALS ─────────────────────────────── */
 .drawer-bd{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;opacity:0;pointer-events:none;transition:.25s}
 .drawer-bd.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-radius:24px 24px 0 0;max-height:85vh;overflow-y:auto;transform:translateY(100%);transition:.3s cubic-bezier(.34,1.2,.64,1);z-index:401;padding:0 0 env(safe-area-inset-bottom)}
@@ -112,9 +122,8 @@ a{color:inherit;text-decoration:none}
 .drawer-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:14px auto 0}
 .drawer-header{padding:16px 20px;border-bottom:1px solid var(--border);font-family:var(--serif);font-size:20px;font-weight:600}
 .drawer-body{padding:16px 20px}
-.drawer-pill{width:40px;height:4px;background:var(--border);border-radius:2px;margin:14px auto 0}
-.drawer-title{padding:14px 20px 4px;font-family:var(--serif);font-size:20px;font-weight:600}
 
+/* ── CART ─────────────────────────────────────────── */
 .cart-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
 .cart-item:last-child{border-bottom:none}
 .cart-item-name{flex:1;font-size:13.5px;font-weight:600}
@@ -123,8 +132,8 @@ a{color:inherit;text-decoration:none}
 .cart-total-row span:last-child{color:var(--accent-dark)}
 .checkout-btn{width:100%;padding:14px;background:var(--accent-dark);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;margin-top:14px;cursor:pointer;font-family:var(--font);transition:.18s;display:flex;align-items:center;justify-content:center;gap:8px}
 .checkout-btn:hover{background:var(--accent)}
-.checkout-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round}
 
+/* Email prompt before checkout */
 #email-prompt{display:none;padding-top:12px}
 .ep-title{font-size:13px;font-weight:600;color:var(--text-dim);margin-bottom:9px}
 .ep-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13.5px;font-family:var(--font);outline:none;background:var(--bg);transition:.18s}
@@ -135,13 +144,12 @@ a{color:inherit;text-decoration:none}
 .ep-confirm{flex:2;padding:11px;background:var(--accent-dark);border:none;border-radius:10px;font-size:13px;font-weight:700;color:#fff;font-family:var(--font);cursor:pointer;transition:.16s}
 .ep-confirm:hover{background:var(--accent)}
 
+/* ── AUTH DRAWER ──────────────────────────────────── */
 .auth-tab-row{display:flex;gap:4px;background:var(--bg);border-radius:10px;padding:4px;margin-bottom:16px}
 .auth-tab{flex:1;padding:9px;border:none;border-radius:7px;font-size:13px;font-weight:500;background:none;color:var(--text-dim);cursor:pointer;font-family:var(--font);transition:.16s}
 .auth-tab.active{background:var(--surface);color:var(--text);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.1)}
 .auth-field{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font);outline:none;background:var(--bg);color:var(--text);transition:.18s;margin-bottom:10px}
 .auth-field:focus{border-color:var(--accent)}
-.auth-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font);outline:none;background:var(--bg);color:var(--text);transition:.18s;margin-bottom:10px;display:block}
-.auth-input:focus{border-color:var(--accent)}
 .auth-submit{width:100%;padding:13px;background:var(--accent-dark);color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer;margin-top:4px;transition:.18s}
 .auth-submit:hover{background:var(--accent)}
 .auth-error{color:#e53e3e;font-size:12px;padding:6px 10px;background:#fff0f0;border-radius:7px;margin-bottom:9px;display:none}
@@ -151,6 +159,7 @@ a{color:inherit;text-decoration:none}
 .user-greeting-email{font-size:12px;color:var(--text-dim);margin-top:2px}
 .logout-btn{padding:7px 14px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--text-dim);font-size:12.5px;cursor:pointer;font-family:var(--font)}
 
+/* Success overlay */
 #order-success{position:fixed;inset:0;background:rgba(250,248,244,.97);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:0;pointer-events:none;transition:.3s;text-align:center;padding:30px}
 #order-success.show{opacity:1;pointer-events:all}
 .success-icon{font-size:64px;animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
@@ -159,11 +168,13 @@ a{color:inherit;text-decoration:none}
 .success-sub{font-size:14px;color:var(--text-dim);max-width:300px;line-height:1.6}
 .success-back{margin-top:12px;padding:12px 28px;background:var(--accent-dark);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer}
 
+/* Toast */
 #toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:rgba(26,18,9,.9);color:#fff;padding:9px 20px;border-radius:28px;font-size:12.5px;font-weight:600;z-index:9999;transition:.25s;opacity:0;white-space:nowrap;pointer-events:none}
 
+/* No server banner */
 #offline-banner{background:rgba(200,150,90,.1);border:1px solid rgba(200,150,90,.3);border-radius:10px;padding:10px 14px;margin:12px;font-size:12.5px;color:var(--accent-dark);display:none;text-align:center}
 
-/* Reservation sheets */
+/* ── Reservation drawers ── */
 .rsv-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:450;opacity:0;pointer-events:none;transition:.25s}
 .rsv-overlay.open{opacity:1;pointer-events:all}
 .rsv-sheet{position:fixed;bottom:0;left:0;right:0;z-index:451;background:var(--surface);border-radius:22px 22px 0 0;max-height:88dvh;overflow-y:auto;transform:translateY(100%);transition:.3s cubic-bezier(.34,1.2,.64,1);padding-bottom:env(safe-area-inset-bottom)}
@@ -175,31 +186,26 @@ a{color:inherit;text-decoration:none}
 .rsv-table-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}
 .rsv-table-card:hover{border-color:rgba(184,134,58,.4);box-shadow:0 3px 14px rgba(0,0,0,.08)}
 .rsv-table-card:active{transform:scale(.98)}
-.rsv-table-ph{height:80px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:32px}
-
-/* rsv success overlay */
-#rsv-success-ov{position:fixed;inset:0;background:rgba(250,248,244,.97);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:0;pointer-events:none;transition:.3s;text-align:center;padding:30px}
-#rsv-success-ov.show{opacity:1;pointer-events:all}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- ── TOP BAR ──────────────────────────────────────── -->
 <div id="topbar">
   <div class="brand">
     <div class="brand-name" id="brand-name">Loading…</div>
     <div class="brand-tagline" id="brand-tagline"></div>
   </div>
   <div class="table-chip" id="table-chip">Table —</div>
-  <button style="width:36px;height:36px;border-radius:50%;background:rgba(184,134,58,.1);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.18s;margin-right:4px" onclick="openRsvDrawer()" title="Reserve a Table">
-    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--accent-dark)" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+  <button style="width:36px;height:36px;border-radius:50%;background:rgba(184,134,58,.1);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.18s;margin-right:4px" onclick="openRsvDrawer()" title="Reserve a Table" id="rsv-topbar-btn">
+    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--accent-dk)" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
   </button>
   <button class="user-btn" id="user-btn" onclick="openAuth()" title="Login / Sign Up">
     <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
   </button>
 </div>
 
-<!-- HERO -->
+<!-- ── HERO / BANNER ────────────────────────────────── -->
 <div id="hero">
   <div id="hero-placeholder">
     <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M5 2v7a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V2"/><line x1="19" y1="2" x2="19" y2="22"/></svg>
@@ -212,18 +218,35 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<div id="offline-banner" style="display:none">
-  ⚠️ Live menu not available — showing demo menu
-  <div id="offline-server-form" style="display:none;margin-top:10px">
-    <input id="offline-server-input" placeholder="Paste server URL e.g. https://xxxx.trycloudflare.com"
-      style="width:100%;padding:8px 12px;border:1px solid rgba(200,150,90,.4);border-radius:8px;font-size:12px;background:rgba(255,255,255,.8);font-family:var(--font);margin-bottom:6px"/>
-    <button onclick="applyManualServer()" style="padding:7px 16px;background:var(--accent-dark);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font)">Connect</button>
+<!-- ── OFFLINE BANNER ───────────────────────────────── -->
+<div id="offline-banner">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div>
+      <strong>⚠️ Cannot reach server</strong>
+      <div style="font-size:11px;margin-top:2px;opacity:.8">Connected to: <span id="offline-server-url"></span></div>
+    </div>
+    <button onclick="toggleServerInput()" style="background:none;border:1px solid rgba(184,134,58,.5);padding:5px 11px;border-radius:7px;font-size:11.5px;cursor:pointer;font-family:var(--sans);color:var(--accent-dark)">
+      ⚙ Change Server
+    </button>
   </div>
-  <div style="font-size:11px;margin-top:6px;cursor:pointer;text-decoration:underline;opacity:.7" onclick="document.getElementById('offline-server-form').style.display='block';this.style.display='none'">Enter server URL manually</div>
+  <div id="server-input-row" style="display:none;margin-top:10px">
+    <div style="font-size:11px;color:var(--accent-dark);margin-bottom:6px">
+      Enter your server URL (WiFi IP or Cloudflare domain):
+    </div>
+    <div style="display:flex;gap:6px">
+      <input id="manual-server-input" style="flex:1;padding:8px 11px;border:1px solid rgba(184,134,58,.3);border-radius:8px;font-size:12.5px;font-family:var(--sans);background:rgba(255,255,255,.8);outline:none;color:var(--text)" 
+        placeholder="e.g. http://192.168.1.100:5000 or https://menu.myrest.com"/>
+      <button onclick="applyManualServer()" style="background:var(--accent-dark);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12.5px;font-family:var(--sans);cursor:pointer;font-weight:600">
+        Connect
+      </button>
+    </div>
+  </div>
 </div>
 
+<!-- ── CATEGORY TABS ────────────────────────────────── -->
 <div id="cat-nav"><div id="cat-scroll"></div></div>
 
+<!-- ── MENU CONTENT ─────────────────────────────────── -->
 <div id="content">
   <div id="menu-loading" style="text-align:center;padding:60px;color:var(--muted)">
     <div style="font-size:32px;margin-bottom:11px">🍽</div>
@@ -232,14 +255,14 @@ a{color:inherit;text-decoration:none}
   <div id="menu-sections"></div>
 </div>
 
-<!-- CART FAB -->
+<!-- ── CART FAB ─────────────────────────────────────── -->
 <button id="cart-fab" onclick="openCart()">
   <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
   <span id="cart-label">View Cart</span>
   <span id="cart-count">0</span>
 </button>
 
-<!-- CART DRAWER -->
+<!-- ── CART DRAWER ───────────────────────────────────── -->
 <div class="drawer-bd" id="cart-drawer-bd" onclick="closeCart(event)">
   <div class="drawer" id="cart-drawer" onclick="event.stopPropagation()">
     <div class="drawer-handle"></div>
@@ -249,6 +272,7 @@ a{color:inherit;text-decoration:none}
       <div id="cart-empty" style="text-align:center;padding:30px;color:var(--muted);display:none"><div style="font-size:36px;margin-bottom:9px">🍽</div><div>Nothing added yet</div></div>
       <div id="cart-summary" style="display:none">
         <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
+        <!-- Email prompt -->
         <div id="email-prompt">
           <div class="ep-title">Add your email for order tracking (optional)</div>
           <input class="ep-input" id="email-input" type="email" placeholder="your@email.com"/>
@@ -258,7 +282,7 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
         <button class="checkout-btn" id="checkout-btn" onclick="startCheckout()">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
           Place Order
         </button>
       </div>
@@ -266,19 +290,21 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- AUTH DRAWER -->
+<!-- ── AUTH DRAWER ───────────────────────────────────── -->
 <div class="drawer-bd" id="auth-drawer-bd" onclick="closeAuth(event)">
   <div class="drawer" id="auth-drawer" onclick="event.stopPropagation()">
     <div class="drawer-handle"></div>
     <div class="drawer-header">Account</div>
     <div class="drawer-body">
+      <!-- Logged in state -->
       <div id="auth-logged-in" style="display:none">
         <div class="user-greeting">
           <div><div class="user-greeting-name" id="auth-name-display">Hi there!</div><div class="user-greeting-email" id="auth-email-display"></div></div>
           <button class="logout-btn" onclick="logout()">Log out</button>
         </div>
-        <p style="font-size:13px;color:var(--text-dim);line-height:1.6">Your orders are tracked and your history helps us serve you better.</p>
+        <p style="font-size:13px;color:var(--text-dim);line-height:1.6">Your orders are tracked and your history helps us serve you better. Thank you for being a valued customer!</p>
       </div>
+      <!-- Login/register -->
       <div id="auth-forms">
         <div class="auth-tab-row">
           <button class="auth-tab active" id="tab-login" onclick="switchAuth('login')">Sign In</button>
@@ -286,11 +312,13 @@ a{color:inherit;text-decoration:none}
         </div>
         <div id="auth-error" class="auth-error"></div>
         <div id="auth-success" class="auth-success"></div>
+        <!-- Login -->
         <div id="form-login">
           <input class="auth-field" id="login-email" type="email" placeholder="Email address"/>
           <input class="auth-field" id="login-pass" type="password" placeholder="Password"/>
           <button class="auth-submit" onclick="doLogin()">Sign In</button>
         </div>
+        <!-- Register -->
         <div id="form-register" style="display:none">
           <input class="auth-field" id="reg-name" placeholder="Your name"/>
           <input class="auth-field" id="reg-email" type="email" placeholder="Email address"/>
@@ -302,7 +330,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- ORDER SUCCESS -->
+<!-- ── SUCCESS OVERLAY ───────────────────────────────── -->
 <div id="order-success">
   <div class="success-icon">✅</div>
   <div class="success-title">Order Placed!</div>
@@ -310,159 +338,60 @@ a{color:inherit;text-decoration:none}
   <button class="success-back" onclick="hideSuccess()">← Back to Menu</button>
 </div>
 
-<!-- RESERVATION SUCCESS -->
-<div id="rsv-success-ov">
-  <div class="success-icon">🪑</div>
-  <div class="success-title">Reservation Confirmed!</div>
-  <div class="success-sub" id="rsv-success-msg">Your table has been reserved.</div>
-  <button class="success-back" onclick="document.getElementById('rsv-success-ov').classList.remove('show')">← Back to Menu</button>
-</div>
-
-<!-- RESERVE TABLE SHEET -->
-<div class="rsv-overlay" id="rsv-overlay" onclick="if(event.target===this)closeRsvOverlay()">
-  <div class="rsv-sheet">
-    <div class="drawer-pill"></div>
-    <div class="drawer-title">🪑 Reserve a Table</div>
-    <div class="drawer-body">
-      <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:14px;line-height:1.6">
-        Select a table to make a reservation.
-      </p>
-      <div id="rsv-tables-list">
-        <div style="text-align:center;padding:30px;color:var(--muted)">Loading tables…</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- RESERVATION FORM SHEET -->
-<div class="rsv-form-overlay" id="rsv-form-overlay" onclick="if(event.target===this)closeRsvFormOverlay()">
-  <div class="rsv-form-sheet">
-    <div class="drawer-pill"></div>
-    <img id="rsv-form-photo" src="" alt="" style="width:100%;height:160px;object-fit:cover;display:none"/>
-    <div class="drawer-body">
-      <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:5px" id="rsv-form-title">Reserve Table</div>
-      <div id="rsv-mode-badge" style="display:inline-block;background:rgba(184,134,58,.1);border:1px solid rgba(184,134,58,.25);color:var(--accent-dark);padding:4px 12px;border-radius:20px;font-size:11.5px;font-weight:600;margin-bottom:14px"></div>
-      <div id="rsv-payment-note" style="display:none;background:rgba(184,134,58,.07);border:1px solid rgba(184,134,58,.2);border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.6;color:var(--text);margin-bottom:14px"></div>
-      <input class="auth-input" id="rsv-c-name" placeholder="Your Full Name *"/>
-      <input class="auth-input" id="rsv-c-phone" type="tel" placeholder="Phone Number *"/>
-      <input class="auth-input" id="rsv-c-dt" type="datetime-local"/>
-      <input class="auth-input" id="rsv-c-guests" type="number" min="1" placeholder="Number of Guests (e.g. 4)"/>
-      <input class="auth-input" id="rsv-c-notes" placeholder="Special requests (optional)"/>
-      <div id="rsv-c-err" style="color:#e53e3e;font-size:12px;background:#fff0f0;border-radius:7px;padding:6px 10px;margin-bottom:8px;display:none"></div>
-      <button class="checkout-btn" onclick="submitMenuReservation()">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        Confirm Reservation
-      </button>
-      <button onclick="closeRsvFormOverlay()" style="width:100%;margin-top:8px;padding:11px;background:none;border:1px solid var(--border);border-radius:10px;font-size:12.5px;color:var(--text-dim);cursor:pointer;font-family:var(--font)">
-        Cancel
-      </button>
-    </div>
-  </div>
-</div>
-
 <div id="toast"></div>
 
 <script>
 /* ════ CONFIG ════ */
+// Replace SERVER_URL with your actual server when self-hosting
+// For WiFi: use http://YOUR_WIFI_IP:5000
+// For Cloudflare: use the public tunnel URL
 const SERVER_URL_FALLBACK = 'http://localhost:5000';
-// When hosted on Vercel, we read the tunnel URL from /config.json (written by launcher.py)
-// URL priority: ?server= param > localStorage > /config.json (Vercel) > localhost
 
-let _tableId  = new URLSearchParams(location.search).get('table') || '1';
-let _server   = new URLSearchParams(location.search).get('server') || null;
+let _tableId = new URLSearchParams(location.search).get('table') || '1';
+// Auto-detect server URL from multiple sources:
+// 1. ?server=URL param in the URL (set by dashboard when generating QR)
+// 2. window.OMORA_SERVER (injected by bridge script when self-hosted)
+// 3. localStorage (previously saved)
+// 4. Fallback
+(function(){
+  const _params = new URLSearchParams(location.search);
+  const _urlServer = _params.get('server');
+  if (_urlServer) {
+    const decoded = decodeURIComponent(_urlServer).replace(/\/+$/, '');
+    localStorage.setItem('menu_server', decoded);
+    return;
+  }
+  // WiFi / LAN: if page is served from same machine as server (not Vercel/GitHub)
+  const h = location.hostname;
+  const isCloud = h.endsWith('.vercel.app') || h.endsWith('.github.io') || h.endsWith('.netlify.app') || h.endsWith('.pages.dev');
+  if (!isCloud && h !== 'localhost' && h !== '127.0.0.1') {
+    // Likely served from server.py directly — use same origin
+    const stored = localStorage.getItem('menu_server');
+    if (!stored || stored === 'http://localhost:5000') {
+      localStorage.setItem('menu_server', location.origin);
+    }
+  }
+})();
+let _server = (window.OMORA_SERVER || localStorage.getItem('menu_server') || SERVER_URL_FALLBACK).replace(/\/+$/, '');
 let _products = [];
 let _settings = {};
 let _cart     = {};
 let _user     = JSON.parse(localStorage.getItem('menu_user') || 'null');
 let _serverOk = false;
 
-// Reservation state
-let _rsvTables     = [];
-let _rsvGlobalMode = 'free';
-let _rsvDepositAmt = 0;
-let _rsvFullAmt    = 0;
-let _rsvSelectedTable = null;
-
-/* ════ SMART SERVER RESOLVER ════
-   On Vercel (not localhost): reads /config.json to find current tunnel URL.
-   launcher.py writes config.json whenever tunnel URL changes.
-   localStorage caches the last working URL to speed up cold loads.
-   Falls back to localhost for direct WiFi connections.
-*/
-async function resolveServer() {
-  // 1. URL param overrides everything
-  if (_server) {
-    localStorage.setItem('menu_server', _server);
-    return _server;
-  }
-
-  const isVercel = location.hostname !== 'localhost' &&
-                   location.hostname !== '127.0.0.1' &&
-                   !location.hostname.match(/^192\.168\./) &&
-                   !location.hostname.match(/^10\./) &&
-                   !location.hostname.match(/^172\.(1[6-9]|2\d|3[01])\./);
-
-  if (isVercel) {
-    // Try to fetch config.json from Vercel (updated by launcher.py)
-    try {
-      const r = await fetch('/config.json?_=' + Date.now(), {signal: AbortSignal.timeout(3000)});
-      if (r.ok) {
-        const cfg = await r.json();
-        if (cfg.serverUrl) {
-          // Test this URL is reachable
-          try {
-            await fetch(cfg.serverUrl + '/api/server-info', {signal: AbortSignal.timeout(3000)});
-            localStorage.setItem('menu_server', cfg.serverUrl);
-            return cfg.serverUrl;
-          } catch {}
-        }
-      }
-    } catch {}
-
-    // Fall back to localStorage cached URL
-    const cached = localStorage.getItem('menu_server');
-    if (cached && cached !== SERVER_URL_FALLBACK) {
-      return cached;
-    }
-
-    // No tunnel found — show a helpful message
-    return null;
-  }
-
-  // Local: WiFi or localhost — use origin or localhost
-  const local = location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'
-    ? location.origin
-    : SERVER_URL_FALLBACK;
-  return local;
-}
-
 /* ════ INIT ════ */
 async function init() {
   document.getElementById('table-chip').textContent = 'Table ' + _tableId;
   applyUser();
-
-  // Resolve the server URL before loading
-  _server = await resolveServer();
-  if (!_server) {
-    // No tunnel available — show offline state with helpful message
-    document.getElementById('offline-banner').textContent =
-      '⚠️ Cannot reach restaurant server. Ask staff for the menu link or connect to WiFi.';
-    document.getElementById('offline-banner').style.display = 'block';
-    document.getElementById('menu-loading').style.display   = 'none';
-    applySettings({});
-    return;
-  }
-
   await loadFromServer();
   logVisit();
-  loadRsvData();
 }
 
 async function loadFromServer() {
   try {
     const [sResp, pResp] = await Promise.all([
       fetch(_server+'/api/settings', {signal:AbortSignal.timeout(4000)}),
-      fetch(_server+'/api/products',  {signal:AbortSignal.timeout(4000)}),
+      fetch(_server+'/api/products', {signal:AbortSignal.timeout(4000)}),
     ]);
     if (!sResp.ok || !pResp.ok) throw new Error('Not ok');
     _settings = await sResp.json();
@@ -472,9 +401,15 @@ async function loadFromServer() {
     applySettings(_settings);
     renderMenu();
     connectSSE();
-  } catch {
-    document.getElementById('offline-banner').style.display='block';
+  } catch(err) {
+    const ob = document.getElementById('offline-banner');
+    if (ob) {
+      ob.style.display='block';
+      const su = document.getElementById('offline-server-url');
+      if (su) su.textContent = _server;
+    }
     document.getElementById('menu-loading').style.display='none';
+    // Try window._menuProducts if bridge injected
     if (window._menuProducts) { _products=window._menuProducts; renderMenu(); }
     if (window._menuSettings) { applySettings(window._menuSettings); }
     else { applySettings({}); }
@@ -503,6 +438,9 @@ function connectSSE() {
   es.addEventListener('settings', e=>{
     try { _settings=JSON.parse(e.data); applySettings(_settings); } catch {}
   });
+  // Also handle if bridge script injects it
+  window.onMenuProducts = p => { _products=p; renderMenu(); };
+  window.onMenuSettings = s => { applySettings(s); };
 }
 
 function logVisit() {
@@ -510,6 +448,7 @@ function logVisit() {
   const name  = _user?.name  || null;
   try {
     if (_serverOk) fetch(_server+'/api/visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tableId:_tableId,customerEmail:email,customerName:name})}).catch(()=>{});
+    else if(window.MenuBridge) window.MenuBridge.logVisit(_tableId,email,name);
   } catch {}
 }
 
@@ -523,9 +462,9 @@ function renderMenu() {
   catScroll.innerHTML = cats.map((c,i)=>`<button class="cat-tab${i===0?' active':''}" onclick="scrollToCat('${CSS.escape(c)}', this)">${c}</button>`).join('');
 
   sections.innerHTML = cats.map(c=>{
-    const items   = _products.filter(p=>(p.category||'Other')===c && p.available!==false);
+    const items = _products.filter(p=>(p.category||'Other')===c && p.available!==false);
     const unavail = _products.filter(p=>(p.category||'Other')===c && p.available===false);
-    const all = [...items,...unavail];
+    const all = [...items, ...unavail];
     if (!all.length) return '';
     return `<div class="cat-section" id="cat-${CSS.escape(c)}" data-cat="${c}">
       <div class="cat-section-title">${c}</div>
@@ -534,11 +473,10 @@ function renderMenu() {
     </div>`;
   }).join('');
   renderCart();
-  setTimeout(attachObservers,50);
 }
 
 function productCard(p) {
-  const inCart  = _cart[p.id]||0;
+  const inCart = _cart[p.id]||0;
   const unavail = p.available===false;
   return `<div class="product-card${unavail?' unavailable':''}" onclick="${unavail?'':(`addToCart('${p.id}',event)`)}">
     ${p.image?`<img class="prod-img" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="prod-img-ph">🍽</div>`}
@@ -577,6 +515,9 @@ const observer = new IntersectionObserver(entries=>{
 },{rootMargin:'-70px 0px -60% 0px'});
 
 function attachObservers() { document.querySelectorAll('.cat-section').forEach(el=>observer.observe(el)); }
+const _origRender=renderMenu; 
+/* Override to attach observers after render */
+renderMenu = function(){_origRender();setTimeout(attachObservers,50);}
 
 /* ════ CART ════ */
 function addToCart(id, e) {
@@ -588,7 +529,6 @@ function addToCart(id, e) {
   showToast(`${p?.name||'Item'} added!`);
   document.getElementById('cart-fab').classList.add('show');
 }
-
 function changeQty(id, delta) {
   if (!_cart[id]) return;
   _cart[id]+=delta;
@@ -619,23 +559,23 @@ function openCart() { document.getElementById('cart-drawer-bd').classList.add('o
 function closeCart(e) { if(e.target===document.getElementById('cart-drawer-bd'))document.getElementById('cart-drawer-bd').classList.remove('open'); }
 
 function startCheckout() {
+  // If user is logged in, skip email prompt
   if (_user) { placeOrder(_user.email, _user.name); return; }
   document.getElementById('email-prompt').style.display='block';
   document.getElementById('checkout-btn').style.display='none';
 }
-
 function placeOrderWithEmail() {
   const email=document.getElementById('email-input').value.trim();
   if(email && !email.includes('@')){showToast('Enter a valid email');return;}
   placeOrder(email||null);
 }
-
 async function placeOrder(email, name) {
   const items=Object.keys(_cart).map(id=>{const p=_products.find(x=>x.id===id);return{...p,quantity:_cart[id]};}).filter(Boolean);
   if(!items.length)return;
   const body={tableId:_tableId,items,customerEmail:email||null,customerName:name||null};
   try{
     if(_serverOk) await fetch(_server+'/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    else if(window.MenuBridge) window.MenuBridge.sendOrder(_tableId,items,email,name);
   }catch(e){}
   _cart={}; renderMenu(); renderCart();
   document.getElementById('cart-drawer-bd').classList.remove('open');
@@ -644,7 +584,6 @@ async function placeOrder(email, name) {
   document.getElementById('success-sub').textContent=sub;
   document.getElementById('order-success').classList.add('show');
 }
-
 function hideSuccess(){document.getElementById('order-success').classList.remove('show');}
 
 /* ════ AUTH ════ */
@@ -717,13 +656,30 @@ function logout(){
 let _tt;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';clearTimeout(_tt);_tt=setTimeout(()=>{t.style.opacity='0';},2200);}
 
-/* ════ RESERVATIONS ════ */
+/* ════ Bridge hooks (for hosted menus) ════ */
+window.onMenuProducts = p=>{ _products=p; renderMenu(); };
+window.onMenuSettings = s=>{ _settings=s; applySettings(s); };
+
+/* ════ BOOT ════ */
+// Auto-detect server from same origin if served from server.py
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  _server = location.origin; // will work for WiFi and cloud hosting
+  localStorage.setItem('menu_server', _server);
+}
+
+
+/* ── TABLE RESERVATIONS ──────────────────────────────── */
+let _rsvTables = [];        // from /api/table-reservations
+let _rsvGlobalMode = 'free';
+let _rsvDepositAmt = 0;
+let _rsvFullAmt = 0;
+let _rsvSelectedTable = null;
+
 async function loadRsvData() {
   try {
-    // FIX: use _server not SERVER
     const [tRes, sRes] = await Promise.all([
       fetch(_server + '/api/table-reservations', {signal:AbortSignal.timeout(4000)}),
-      fetch(_server + '/api/settings',           {signal:AbortSignal.timeout(4000)})
+      fetch(_server + '/api/settings', {signal:AbortSignal.timeout(4000)})
     ]);
     if (tRes.ok) {
       const d = await tRes.json();
@@ -735,54 +691,39 @@ async function loadRsvData() {
       if (s.rsvDepositAmt) _rsvDepositAmt = parseFloat(s.rsvDepositAmt) || 0;
       if (s.rsvFullAmt)    _rsvFullAmt    = parseFloat(s.rsvFullAmt)    || 0;
     }
-  } catch (e) {
-    console.log('RSV load failed:', e);
-  }
+  } catch {}
 }
 
 function openRsvDrawer() {
   renderRsvTables();
   document.getElementById('rsv-overlay').classList.add('open');
 }
-
 function closeRsvOverlay() {
   document.getElementById('rsv-overlay').classList.remove('open');
 }
-
 function closeRsvFormOverlay() {
   document.getElementById('rsv-form-overlay').classList.remove('open');
 }
-
-// Aliases
-const closeRsvDrawer     = closeRsvOverlay;
+// Aliases for backward compat
+const closeRsvDrawer = closeRsvOverlay;
 const closeRsvFormDrawer = closeRsvFormOverlay;
 
 function renderRsvTables() {
   const el = document.getElementById('rsv-tables-list');
   if (!el) return;
-
-  const tableNums = _rsvTables.length
-    ? _rsvTables.map(t => t.tableNum)
-    : [1,2,3,4,5,6,7,8];
-
-  const getTableData = n => _rsvTables.find(t => t.tableNum === n) || { tableNum: n, label: 'Table ' + n };
-  const modeLabels   = {
-    free:    'Free',
-    deposit: 'Deposit PKR ' + _rsvDepositAmt,
-    full:    'Full Pay PKR ' + _rsvFullAmt
-  };
-
+  // If no server table configs, generate from a default set (tables 1-8)
+  const tableNums = _rsvTables.length ? _rsvTables.map(t=>t.tableNum) : [1,2,3,4,5,6,7,8];
+  const getTableData = n => _rsvTables.find(t=>t.tableNum===n) || { tableNum:n, label:'Table '+n };
   el.innerHTML = tableNums.map(n => {
-    const t    = getTableData(n);
+    const t = getTableData(n);
     const mode = t.reservationMode || _rsvGlobalMode;
-    return `<div class="rsv-table-card" onclick="openRsvForm(${n})" style="margin-bottom:9px">
-      ${t.photo
-        ? `<img src="${t.photo}" style="width:100%;height:80px;object-fit:cover"/>`
-        : `<div class="rsv-table-ph">🪑</div>`}
+    const modeLabels = { free:'Free', deposit:'Deposit PKR'+_rsvDepositAmt, full:'Full Pay PKR'+_rsvFullAmt };
+    return `<div class="rsv-table-card" onclick="openRsvForm(${n})">
+      ${t.photo ? `<img class="rsv-table-img" src="${t.photo}" alt="${t.label}"/>` : `<div class="rsv-table-ph">🪑</div>`}
       <div style="padding:11px 13px;display:flex;align-items:center;justify-content:space-between">
         <div>
-          <div style="font-size:14px;font-weight:700">${t.label || 'Table ' + n}</div>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:2px">${modeLabels[mode] || mode}</div>
+          <div style="font-size:14px;font-weight:700">${t.label || 'Table '+n}</div>
+          <div style="font-size:11px;color:var(--dim);margin-top:2px">${modeLabels[mode]||mode}</div>
         </div>
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
@@ -791,16 +732,12 @@ function renderRsvTables() {
 }
 
 function openRsvForm(tableNum) {
-  const t    = _rsvTables.find(x => x.tableNum === tableNum) || { tableNum, label: 'Table ' + tableNum };
+  const t = _rsvTables.find(x=>x.tableNum===tableNum) || { tableNum, label:'Table '+tableNum };
   const mode = t.reservationMode || _rsvGlobalMode;
   _rsvSelectedTable = { ...t, mode };
 
-  document.getElementById('rsv-form-title').textContent  = 'Reserve ' + (t.label || 'Table ' + tableNum);
-  const modeMap = {
-    free:    '✅ Free — No payment',
-    deposit: '💳 Deposit: PKR ' + _rsvDepositAmt,
-    full:    '💰 Full Payment: PKR ' + _rsvFullAmt
-  };
+  document.getElementById('rsv-form-title').textContent = 'Reserve ' + (t.label || 'Table '+tableNum);
+  const modeMap = { free:'✅ Free — No payment', deposit:'💳 Deposit: PKR'+_rsvDepositAmt, full:'💰 Full Payment: PKR'+_rsvFullAmt };
   document.getElementById('rsv-mode-badge').textContent = modeMap[mode] || mode;
 
   const photoImg = document.getElementById('rsv-form-photo');
@@ -808,28 +745,24 @@ function openRsvForm(tableNum) {
   else         { photoImg.style.display='none'; }
 
   const notice = document.getElementById('rsv-payment-note');
-  if (mode === 'deposit') {
-    notice.style.display = 'block';
+  if (mode==='deposit') {
+    notice.style.display='block';
     notice.innerHTML = `💳 <strong>A deposit of PKR ${_rsvDepositAmt} is required.</strong><br>Pay at the restaurant when you arrive to claim your reservation.`;
-  } else if (mode === 'full') {
-    notice.style.display = 'block';
+  } else if (mode==='full') {
+    notice.style.display='block';
     notice.innerHTML = `💰 <strong>Full advance payment of PKR ${_rsvFullAmt} is required.</strong><br>Please pay before your reservation is confirmed.`;
   } else {
-    notice.style.display = 'none';
+    notice.style.display='none';
   }
 
-  // FIX: use _user not user
-  if (_user) {
-    document.getElementById('rsv-c-name').value  = _user.name  || '';
-    // phone not stored in _user but try anyway
+  // Pre-fill from logged-in user
+  if (user) {
+    document.getElementById('rsv-c-name').value  = user.name  || '';
+    document.getElementById('rsv-c-phone').value = user.phone || '';
   }
-
   const dt = document.getElementById('rsv-c-dt');
-  if (dt) {
-    const n = new Date(); n.setHours(n.getHours()+1);
-    dt.value = n.toISOString().slice(0,16);
-  }
-  document.getElementById('rsv-c-err').style.display = 'none';
+  if (dt) { const n=new Date(); n.setHours(n.getHours()+1); dt.value=n.toISOString().slice(0,16); }
+  document.getElementById('rsv-err').style.display='none';
 
   closeRsvOverlay();
   document.getElementById('rsv-form-overlay').classList.add('open');
@@ -844,67 +777,103 @@ async function submitMenuReservation() {
   const errEl  = document.getElementById('rsv-c-err');
 
   if (!name || !phone || !dt) {
-    errEl.textContent = 'Please fill in Name, Phone, and Date/Time';
-    errEl.style.display = 'block';
-    return;
+    errEl.textContent='Please fill in Name, Phone, and Date/Time';
+    errEl.style.display='block'; return;
   }
-  errEl.style.display = 'none';
+  errEl.style.display='none';
+  // loading...
 
   const rsvData = {
-    tableId:       _rsvSelectedTable?.tableNum,
-    tableLabel:    _rsvSelectedTable?.label || 'Table ' + _rsvSelectedTable?.tableNum,
-    name, phone,
-    datetime:      dt,
-    guests:        parseInt(guests) || 1,
-    notes,
-    mode:          _rsvSelectedTable?.mode || _rsvGlobalMode,
-    depositAmount: _rsvDepositAmt,
-    fullAmount:    _rsvFullAmt,
-    createdAt:     Date.now()
+    tableId: _rsvSelectedTable?.tableNum, 
+    tableLabel: _rsvSelectedTable?.label || 'Table '+_rsvSelectedTable?.tableNum,
+    name, phone, datetime: dt, guests: parseInt(guests)||1, notes,
+    mode: _rsvSelectedTable?.mode || _rsvGlobalMode,
+    depositAmount: _rsvDepositAmt, fullAmount: _rsvFullAmt,
+    createdAt: Date.now()
   };
-
   const rsvKey = 'rsv_' + rsvData.tableId + '_' + Date.now();
 
   try {
-    // FIX: use _serverOk not connected, use _server not SERVER
-    if (_serverOk) {
+    if (connected) {
       await fetch(_server + '/api/settings', {
-        method:  'POST',
-        headers: {'Content-Type': 'application/json'},
-        body:    JSON.stringify({ [rsvKey]: JSON.stringify(rsvData) })
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ [rsvKey]: JSON.stringify(rsvData) })
       });
     }
-  } catch (e) {
-    console.log('Reservation save failed:', e);
-  }
+  } catch {}
 
-  closeRsvFormOverlay();
-
-  // FIX: use correct success overlay id
-  document.getElementById('rsv-success-msg').textContent =
-    'Your reservation for ' + rsvData.tableLabel +
-    ' is confirmed! We\'ll contact you at ' + phone;
-  document.getElementById('rsv-success-ov').classList.add('show');
+  closeRsvFormDrawer();
+  // done
+  document.getElementById('success-msg').textContent = 
+    'Your reservation for ' + rsvData.tableLabel + ' is confirmed! We'll contact you at ' + phone;
+  document.getElementById('success-ov').classList.add('show');
 }
 
-/* ════ MANUAL SERVER (fallback for Vercel menu) ════ */
+<!-- RESERVE TABLE SHEET -->
+<div class="rsv-overlay" id="rsv-overlay" onclick="if(event.target===this)closeRsvOverlay()">
+  <div class="rsv-sheet">
+    <div class="drawer-pill"></div>
+    <div class="drawer-title">🪑 Reserve a Table</div>
+    <div class="drawer-body">
+      <p style="font-size:12.5px;color:var(--dim);margin-bottom:14px;line-height:1.6">
+        Select a table to make a reservation.
+      </p>
+      <div id="rsv-tables-list">
+        <div style="text-align:center;padding:30px;color:var(--muted)">Loading tables…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVATION FORM SHEET -->
+<div class="rsv-form-overlay" id="rsv-form-overlay" onclick="if(event.target===this)closeRsvFormOverlay()">
+  <div class="rsv-form-sheet">
+    <div class="drawer-pill"></div>
+    <img id="rsv-form-photo" src="" alt="" style="width:100%;height:160px;object-fit:cover;display:none"/>
+    <div class="drawer-body">
+      <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:5px" id="rsv-form-title">Reserve Table</div>
+      <div id="rsv-mode-badge" style="display:inline-block;background:rgba(184,134,58,.1);border:1px solid rgba(184,134,58,.25);color:var(--accent-dk);padding:4px 12px;border-radius:20px;font-size:11.5px;font-weight:600;margin-bottom:14px"></div>
+      <div id="rsv-payment-note" style="display:none;background:rgba(184,134,58,.07);border:1px solid rgba(184,134,58,.2);border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.6;color:var(--text);margin-bottom:14px"></div>
+      <input class="auth-input" id="rsv-c-name" placeholder="Your Full Name *"/>
+      <input class="auth-input" id="rsv-c-phone" type="tel" placeholder="Phone Number *"/>
+      <input class="auth-input" id="rsv-c-dt" type="datetime-local"/>
+      <input class="auth-input" id="rsv-c-guests" type="number" min="1" placeholder="Number of Guests (e.g. 4)"/>
+      <input class="auth-input" id="rsv-c-notes" placeholder="Special requests (optional)"/>
+      <div class="auth-msg err" id="rsv-c-err" style="display:none"></div>
+      <button class="checkout-btn" onclick="submitMenuReservation()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Confirm Reservation
+      </button>
+      <button onclick="closeRsvFormOverlay()" style="width:100%;margin-top:8px;padding:11px;background:none;border:1px solid var(--border);border-radius:10px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:var(--sans)">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+function toggleServerInput() {
+  const row = document.getElementById('server-input-row');
+  const inp = document.getElementById('manual-server-input');
+  if (row.style.display === 'none') {
+    row.style.display = 'block';
+    inp.value = _server;
+    inp.focus();
+  } else {
+    row.style.display = 'none';
+  }
+}
+
 async function applyManualServer() {
-  let url = (document.getElementById('offline-server-input').value || '').trim().replace(/\/$/, '');
-  if (!url) return;
-  if (!url.startsWith('http')) url = 'https://' + url;
-  _server = url;
-  localStorage.setItem('menu_server', url);
+  const val = document.getElementById('manual-server-input').value.trim().replace(/\/+$/, '');
+  if (!val) return;
+  _server = val;
+  localStorage.setItem('menu_server', val);
   document.getElementById('offline-banner').style.display = 'none';
   document.getElementById('menu-loading').style.display = 'block';
-  _serverOk = false;
   await loadFromServer();
-  if (_serverOk) {
-    loadRsvData();
-    logVisit();
-  }
 }
 
-/* ════ BOOT ════ */
+loadRsvData();
 init();
 </script>
 </body>
